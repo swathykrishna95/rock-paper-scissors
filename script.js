@@ -1,14 +1,11 @@
 let getComputerChoice = () => {
     let choices = ['Rock', 'Paper', 'Scissors'];
     let compChoice = choices[Math.floor(Math.random() * 3)]
-    console.log(compChoice);
     return compChoice;
 }
 
-let playRound = () => {
-    let playerSelection = prompt("Enter your choice: (rock, paper or scissors:" );
-    if(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors'){
-        let computerSelection = getComputerChoice().toLowerCase();
+let playRound = (playerSelection, computerSelection) => {
+    
         if(playerSelection .toLowerCase() === computerSelection){
             console.log(`Both hands are ${playerSelection}. Its a draw!`);
         }
@@ -19,6 +16,13 @@ let playRound = () => {
         else{
             console.log(`${computerSelection} beats ${playerSelection}. You lose!`)
         }
+}
+
+let game = () => {
+    let playerSelection = prompt("Enter your choice: (rock, paper or scissors:" ).toLowerCase();
+    if(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors'){
+        let computerSelection = getComputerChoice().toLowerCase();
+        playRound(playerSelection, computerSelection);
     }
     else{
         console.log("Please select a valid hand.")
