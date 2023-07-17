@@ -2,9 +2,14 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 const result = document.querySelector('#result');
-let score = document.querySelector('#score')
-;
+const scoreTotal = document.querySelector('#score');
 let playerSelection = "";
+
+const start = document.querySelector('#start')
+
+
+let gameStart = () => {
+start.textContent = "Game has started!";
 rock.addEventListener('click', () => {playerSelection = 'rock';
                                         game()});
 paper.addEventListener('click', ()=>{playerSelection = 'paper'
@@ -12,6 +17,9 @@ paper.addEventListener('click', ()=>{playerSelection = 'paper'
 scissors.addEventListener('click', ()=> {playerSelection = 'scissors'
                                         game()});
 
+}
+
+start.addEventListener('click', gameStart);
 
 
 let getComputerChoice = () => {
@@ -42,7 +50,6 @@ let game = () => {
     let compScore = 0;
     let result = "";
     
-    while(score == 5 || compScore == 5){
     let computerSelection = getComputerChoice().toLowerCase();
     result = playRound(playerSelection, computerSelection);
     
@@ -55,14 +62,14 @@ let game = () => {
     
     if(score == compScore)
     {
-        score.innerText = `Both scored ${score}. Match is a draw!`;
+        scoreTotal.textContent = `Both scored ${score}. Match is a draw!`;
     }
     else if(score > compScore){
-        score.innerText = `Player scored ${score} and computer scored ${compScore}. Player wins!`;
+        scoreTotal.textContent = `Player scored ${score} and computer scored ${compScore}. Player wins!`;
     }
     else{
-        score.innerText =`Player scored ${score} and computer scored ${compScore}. Player loses!`;
+        scoreTotal.textContent =`Player scored ${score} and computer scored ${compScore}. Player loses!`;
     }
 }
-}
+
 
