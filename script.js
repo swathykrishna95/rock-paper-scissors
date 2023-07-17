@@ -22,13 +22,11 @@ let playRound = (playerSelection, computerSelection) => {
 }
 
 let game = () => {
-    let i = 5;
     let score = 0;
     let compScore = 0;
     let result = "";
-    while(i > 0)
-    {
-    let playerSelection = prompt("Enter your choice: (rock, paper or scissors:" ).toLowerCase();
+
+    let playerSelection = 
     if(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors'){
         let computerSelection = getComputerChoice().toLowerCase();
         result = playRound(playerSelection, computerSelection);
@@ -43,7 +41,7 @@ let game = () => {
     else{
         compScore += 1;
     }
-    }
+    
     console.log(score, compScore);
     if(score == compScore)
     {
@@ -56,3 +54,14 @@ let game = () => {
         console.log(`Player scored ${score} and computer scored ${compScore}. Player loses!`)
     }
 }
+
+
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+
+document.addEventListener('onclick', () => {playerSelection = 'rock'});
+console.log(this)
+document.addEventListener('onclick', () => {playerSelection = 'paper'});
+document.addEventListener('onclick', () => {playerSelection = 'scissors'});
+
