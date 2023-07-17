@@ -1,3 +1,19 @@
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const result = document.querySelector('#result');
+let score = document.querySelector('#score')
+;
+let playerSelection = "";
+rock.addEventListener('click', () => {playerSelection = 'rock';
+                                        game()});
+paper.addEventListener('click', ()=>{playerSelection = 'paper'
+                                        game()});
+scissors.addEventListener('click', ()=> {playerSelection = 'scissors'
+                                        game()});
+
+
+
 let getComputerChoice = () => {
     let choices = ['Rock', 'Paper', 'Scissors'];
     let compChoice = choices[Math.floor(Math.random() * 3)]
@@ -7,15 +23,15 @@ let getComputerChoice = () => {
 let playRound = (playerSelection, computerSelection) => {
     let win = "";
     if(playerSelection .toLowerCase() === computerSelection){
-        console.log(`Both hands are ${playerSelection}. Its a draw!`);
+        result.textContent = `Both hands are ${playerSelection}. Its a draw!`;
     }
     else if(playerSelection == 'rock' && computerSelection == 'scissors' || playerSelection == 'scissors' && computerSelection == 'paper' || playerSelection == 'paper' && computerSelection == 'rock'){
-        console.log(`${playerSelection} beats ${computerSelection}. You win!`);
+        result.textContent = `${playerSelection} beats ${computerSelection}. You win!`;
         win = "player win"
     }
     
     else{
-        console.log(`${computerSelection} beats ${playerSelection}. You lose!`);
+        result.textContent = `${computerSelection} beats ${playerSelection}. You lose!`;
         win = "computer win";
     }
     return win;
@@ -25,16 +41,11 @@ let game = () => {
     let score = 0;
     let compScore = 0;
     let result = "";
-
-    let playerSelection = 
-    if(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors'){
-        let computerSelection = getComputerChoice().toLowerCase();
-        result = playRound(playerSelection, computerSelection);
-    }
-    else{
-        console.log("Please select a valid hand.")
-    }
-    i-= 1;
+    
+    while(score == 5 || compScore == 5){
+    let computerSelection = getComputerChoice().toLowerCase();
+    result = playRound(playerSelection, computerSelection);
+    
     if(result == 'player win'){
         score += 1;
     }
@@ -42,26 +53,16 @@ let game = () => {
         compScore += 1;
     }
     
-    console.log(score, compScore);
     if(score == compScore)
     {
-        console.log(`Both scored ${score}. Match is a draw!`)
+        score.innerText = `Both scored ${score}. Match is a draw!`;
     }
     else if(score > compScore){
-        console.log(`Player scored ${score} and computer scored ${compScore}. Player wins!`)
+        score.innerText = `Player scored ${score} and computer scored ${compScore}. Player wins!`;
     }
     else{
-        console.log(`Player scored ${score} and computer scored ${compScore}. Player loses!`)
+        score.innerText =`Player scored ${score} and computer scored ${compScore}. Player loses!`;
     }
 }
-
-
-const rock = document.querySelector('#rock');
-const paper = document.querySelector('#paper');
-const scissors = document.querySelector('#scissors');
-
-document.addEventListener('onclick', () => {playerSelection = 'rock'});
-console.log(this)
-document.addEventListener('onclick', () => {playerSelection = 'paper'});
-document.addEventListener('onclick', () => {playerSelection = 'scissors'});
+}
 
