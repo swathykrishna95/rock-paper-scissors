@@ -1,3 +1,13 @@
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+	button.addEventListener('click', () => {
+  	console.log(button.textContent);
+    game(button.textContent.toLowerCase());
+  })
+})
+
 let getComputerChoice = () => {
     let choices = ['Rock', 'Paper', 'Scissors'];
     let compChoice = choices[Math.floor(Math.random() * 3)]
@@ -21,22 +31,24 @@ let playRound = (playerSelection, computerSelection) => {
     return win;
 }
 
-let game = () => {
-    let i = 5;
+let game = (playerChoice) => {
+    //let i = 5;
     let score = 0;
     let compScore = 0;
     let result = "";
-    while(i > 0)
+    while(score == 5 || compScore == 5)
     {
-    let playerSelection = prompt("Enter your choice: (rock, paper or scissors:" ).toLowerCase();
+ 
+    let playerSelection = playerChoice;
+    //console.log(playerSelection)
+  
+
     if(playerSelection == 'rock' || playerSelection == 'paper' || playerSelection == 'scissors'){
         let computerSelection = getComputerChoice().toLowerCase();
         result = playRound(playerSelection, computerSelection);
     }
-    else{
-        console.log("Please select a valid hand.")
-    }
-    i-= 1;
+   
+    //i-= 1;
     if(result == 'player win'){
         score += 1;
     }
@@ -44,6 +56,7 @@ let game = () => {
         compScore += 1;
     }
     }
+
     console.log(score, compScore);
     if(score == compScore)
     {
